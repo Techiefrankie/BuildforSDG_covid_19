@@ -1,0 +1,4 @@
+Flask==1.1.1
+Flask-RESTful==0.3.8
+python-simplexml==0.1.5
+gunicorn==20.0.4
