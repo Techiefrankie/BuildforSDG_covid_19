@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, make_response
 from flask_restful import Api
-import estimator
+import src.estimator as estimator
 import time
 from simplexml import dumps
 
@@ -82,3 +82,7 @@ def append_log(log):
     f = open(log_file, mode='at', encoding='utf-8')
     f.write(log)
     f.close()
+
+
+if __name__ == "__main__":
+    app.run()
