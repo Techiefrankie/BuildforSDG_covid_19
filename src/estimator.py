@@ -12,7 +12,7 @@ def estimator(data):
     # number of infected people at a requested time
     # get the timeToElapse property and get its factor of 3, since currently infected value doubles in 3 days
     period = data.get("timeToElapse")
-    projection = 2 ** period // 3  # get the nearest whole number
+    projection = 2 ** (period // 3)  # get the nearest whole number
     # get the effective projection values for impact and severe
     impact_inf_req_time = impact_currently_infected * projection
     impactsevere_inf_req_time = impactsevere_currently_infected * projection
@@ -24,8 +24,8 @@ def estimator(data):
 
     # number of available beds assuming 35% of hospital beds available for covid_19 cases
     beds_available = data.get("totalHospitalBeds") * 0.35
-    impact_hospital_bed = beds_available - impact_sev_cases_req_time
-    impactsevere_hospital_bed = beds_available - impactsevere_sev_cases_req_time
+    impact_hospital_bed = int(beds_available - impact_sev_cases_req_time)
+    impactsevere_hospital_bed = int(beds_available - impactsevere_sev_cases_req_time)
 
     # challenge 3:
     # cases that would require ICU
